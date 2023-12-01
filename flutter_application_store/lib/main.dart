@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_store/productPage.dart';
 import 'package:flutter_application_store/storeHome.dart';
 
 void main() {
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const storeHome(),
+      routes: <String, WidgetBuilder>{
+        '/ProductPage': (context)=>ProductPage()
+      },
     );
   }
 }

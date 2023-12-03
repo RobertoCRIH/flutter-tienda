@@ -9,7 +9,7 @@ class ProductList{
   @HiveField(0)
   final String title;
   @HiveField(1,defaultValue: false)
-  late final bool inCart;
+  bool inCart;
   @HiveField(2,defaultValue: 50)
   final int price;
   @HiveField(3,defaultValue: 0)

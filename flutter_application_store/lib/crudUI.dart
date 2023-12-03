@@ -45,6 +45,10 @@ class _ProductPageListState extends State<ProductPageList>{
   final TextEditingController _controller_price = TextEditingController();
   final TextEditingController _controller_ranking = TextEditingController();
   final TextEditingController _controller_cal = TextEditingController();
+  final TextEditingController _controller_cat = TextEditingController();
+  final TextEditingController _controller_ad = TextEditingController();
+  final TextEditingController _controller_vitamins = TextEditingController();
+  final TextEditingController _controller_img = TextEditingController();
 
   @override
   Widget build(BuildContext context){
@@ -61,12 +65,23 @@ class _ProductPageListState extends State<ProductPageList>{
             itemBuilder: (context,index){
               var prod = box.getAt(index);
               return ListTile(
-                title: Text(prod!.title),
+                title: Text(""),
                 subtitle: Column(children: [
+                  Text(prod!.title,style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold),),
                   Text(prod.desc),
                   Text("\$"+prod.price.toString()),
                   Text("RANKING: "+prod.ranking.toString()),
-                  Text('Calorias: '+prod.calories)
+                  Text('Calorias: '+prod.calories),
+                  Text('Categoria: '+prod.category),
+                  Text('Aditivos: '+prod.aditives),
+                  Text('Vitaminas: '+prod.vitamins),
+
+                  Image.network(prod.img_url,
+                    errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                      return Text('N/A');
+                    },
+                    width: 200,
+                  )
                 ]),
                 leading: Checkbox(
                   value: prod.inCart,
@@ -90,7 +105,7 @@ class _ProductPageListState extends State<ProductPageList>{
         onPressed: () async {
           showDialog(context: context, 
           builder: (context){
-            return AlertDialog(
+            return SingleChildScrollView( child: AlertDialog(
               title: Text('Add Item'),
               content: 
               Column(children: [
@@ -112,9 +127,26 @@ class _ProductPageListState extends State<ProductPageList>{
                   controller: _controller_ranking,
                   keyboardType: TextInputType.number,
                 ),
+                
                 TextField(
                   decoration: InputDecoration(hintText: 'Calorias'),
                   controller: _controller_cal,
+                ),
+                TextField(
+                  decoration: InputDecoration(hintText: 'Categoria'),
+                  controller: _controller_cat,
+                ),
+                TextField(
+                  decoration: InputDecoration(hintText: 'Aditivos'),
+                  controller: _controller_ad,
+                ),
+                TextField(
+                  decoration: InputDecoration(hintText: 'Vitaminas'),
+                  controller: _controller_vitamins,
+                ),
+                TextField(
+                  decoration: InputDecoration(hintText: 'URL de la imagen'),
+                  controller: _controller_img,
                 )
               ],),
               
@@ -123,7 +155,8 @@ class _ProductPageListState extends State<ProductPageList>{
                   child: Text('Add'),
                   onPressed: (){
                     if(_controller.text.isNotEmpty){
-                      var prod = ProductList(_controller.text, false, int.parse(_controller_price.text), int.parse(_controller_ranking.text), _controller_desc.text, _controller_cal.text);
+                      var prod = ProductList(_controller.text, false, int.parse(_controller_price.text), int.parse(_controller_ranking.text), _controller_desc.text, _controller_cal.text,_controller_cat.text,_controller_ad.text,_controller_vitamins.text,_controller_img.text);
+                      
                       _crudService.addItem(prod);
                       _controller.clear();
                       Navigator.pop(context);
@@ -132,7 +165,7 @@ class _ProductPageListState extends State<ProductPageList>{
                   
                 )
               ],
-            );
+            ));
           });          
         },
         child: Icon(Icons.add),

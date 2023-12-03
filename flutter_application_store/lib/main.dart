@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_store/crud.dart';
+import 'package:flutter_application_store/crudUI.dart';
 import 'package:flutter_application_store/productPage.dart';
 import 'package:flutter_application_store/storeHome.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(ProductListAdapter());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -35,7 +41,8 @@ class MyApp extends StatelessWidget {
       ),
       home: const storeHome(),
       routes: <String, WidgetBuilder>{
-        '/ProductPage': (context)=>ProductPage()
+        '/ProductPage': (context)=>ProductPage(),
+        '/Crud':(context) => CrudUI()
       },
     );
   }

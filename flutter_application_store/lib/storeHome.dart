@@ -13,7 +13,11 @@ class storeHome extends StatelessWidget{
         child: Scaffold(
           appBar: AppBar(
             leading: const Icon(Icons.menu, color: Colors.black),
-            actions: const [Icon(Icons.shopping_cart_outlined,color: Colors.black)],
+            actions: <Widget>[
+              IconButton(onPressed: (){
+                Navigator.pushNamed(context, '/Crud');
+              }, icon: Icon(Icons.shopping_bag))
+            ],
           ),
           body: const SingleChildScrollView(
             child: Padding(

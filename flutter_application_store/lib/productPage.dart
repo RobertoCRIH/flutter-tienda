@@ -14,7 +14,12 @@ class ProductPage extends StatelessWidget{
         child: Scaffold(
           backgroundColor: Colors.amber[800],
           appBar: AppBar(
-            leading: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 255, 255, 255)),
+            leading: const Icon(Icons.shopping_cart_checkout, color: Color.fromARGB(255, 255, 255, 255)),
+            actions: <Widget>[
+              IconButton(onPressed: (){
+                Navigator.pop(context);
+              }, icon: Icon(Icons.cancel_outlined,color: Colors.white,))
+            ],
             backgroundColor: Colors.amber[800],
           ),
           body: const SingleChildScrollView(

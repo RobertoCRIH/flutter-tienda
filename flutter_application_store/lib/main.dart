@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_store/cart.dart';
 import 'package:flutter_application_store/crud.dart';
 import 'package:flutter_application_store/crudUI.dart';
+import 'package:flutter_application_store/productFrutas.dart';
+import 'package:flutter_application_store/productNueces.dart';
 import 'package:flutter_application_store/productPage.dart';
 import 'package:flutter_application_store/storeHome.dart';
 import 'package:hive/hive.dart';
@@ -39,10 +42,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const storeHome(),
+      home:  storeHome(),
       routes: <String, WidgetBuilder>{
         '/ProductPage': (context)=>ProductPage(),
-        '/Crud':(context) => CrudUI()
+        '/Crud':(context) => CrudUI(),
+        '/Cart':(context) => Cart(),
+        '/Nueces':(context)=> ProductPageNueces(),
+        '/Frutas':(context) => ProductPageFrutas()
       },
     );
   }

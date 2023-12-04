@@ -14,6 +14,8 @@ class ProductSlider extends StatelessWidget{
             Row(
               children: [
                 //Este es un objeto del slider
+
+            
             Column(
               children: [
                 CircleAvatar(

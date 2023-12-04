@@ -30,7 +30,7 @@ class ProductPage extends StatelessWidget{
                 children: [
                 //Aquí van todos los widgets que van a aparecer en Home
                 
-                ProductBanner(),
+                ProductBanner(), 
                 ProductSpecs(),
                 AddToCart(),
                 CheckCart()

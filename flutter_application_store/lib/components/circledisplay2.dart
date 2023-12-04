@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 
-class CircleDisplay extends StatelessWidget{
-  const CircleDisplay({super.key});
+class CircleDisplay2 extends StatelessWidget{
+  const CircleDisplay2({super.key});
   @override
   Widget build(BuildContext context){
       return Container(
@@ -11,24 +11,24 @@ class CircleDisplay extends StatelessWidget{
         width:  MediaQuery.of(context).size.width,
         height:  MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: Colors.amber[800],
+          color: Colors.purple[100],
           borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width)
         ),
         child:  Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(backgroundImage: AssetImage('assets/nuts.jpg'),radius: 50,),
+            CircleAvatar(backgroundImage: AssetImage('assets/fruit.jpeg'),radius: 50,),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('Buy Nuts',style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold),),
+                Text('Buy Fruits',style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold),),
                 
                 Text('\$49.00',style: TextStyle(color: Colors.white, fontSize: 20),),
                 Text(' Rating: 4.5 / 5',style: TextStyle(color: Colors.white, fontSize: 16)),
                 SizedBox(height: 20,),
                 ElevatedButton(onPressed: (){
-                  Navigator.pushNamed(context, '/Nueces');
+                  Navigator.pushNamed(context, '/Frutas');
                 }, child: Row(children: [Icon(Icons.shopping_cart),Text('Go to Category',style: TextStyle(fontSize: 22),)],))
               ],
             ),
